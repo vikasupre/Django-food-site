@@ -1,0 +1,29 @@
+.alert-triger {
+  position: fixed;
+  top: -100%;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: show-alert 7s;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes show-alert {
+  0% {
+    top: -100%;
+  }
+  20% {
+    top: 90px;
+  }
+  80% {
+    top: 90px;
+  }
+  100% {
+    top: -100%;
+  }
+}
