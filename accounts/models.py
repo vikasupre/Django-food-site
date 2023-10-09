@@ -5,8 +5,6 @@ from django.db.models.signals import post_save
 
 
 # Create your models here.
-
-
 class UserManager(BaseUserManager):
     def create_user(self, username, first_name, last_name, email, password=None):
         if not username:
@@ -36,10 +34,10 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
-    RESTAURANT = 1
+    VENDOR = 1
     CUSTOMER = 2
     ROLL_CHOICE = (
-        (RESTAURANT, "restaurant"), (CUSTOMER, "customer")
+        (VENDOR, "vendor"), (CUSTOMER, "customer")
     )
     username = models.CharField(max_length=50)
     email = models.EmailField(unique=True, max_length=50)
@@ -72,6 +70,13 @@ class User(AbstractBaseUser):
 
     def has_module_perms(self, app_lable):
         return True
+
+    def get_role(self):
+        if self.role == 1:
+            user_role = 'vendor'
+        elif self.role == 2:
+            user_role = 'customer'
+        return user_role
 
 
 class UserProfile(models.Model):

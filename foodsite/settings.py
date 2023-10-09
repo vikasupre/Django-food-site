@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',
+    'vendor',
 ]
 
 MIDDLEWARE = [
@@ -153,3 +154,5 @@ from django.contrib.messages import constants as messages
 MESSAGE_TAGS={
     messages.ERROR:'danger'
 }
+# where requests are redirected for login when using the login_required() decorator,
+LOGIN_URL='/accounts/login/'
