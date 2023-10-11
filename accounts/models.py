@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
-from django.dispatch import receiver
-from django.db.models.signals import post_save
 
 
 # Create your models here.
@@ -101,8 +99,4 @@ class UserProfile(models.Model):
         return self.user.email
 
 
-@receiver(post_save, sender=User)
-def post_save_create_userprofile(sender, instance, **kwargs):
-    profile, create = UserProfile.objects.update_or_create(user=instance)
-    print(create)
-    profile.save()
+
